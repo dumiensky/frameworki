@@ -1,5 +1,5 @@
 import React from 'react';
-import { SettingOutlined } from '@ant-design/icons';
+import { SettingOutlined, UserOutlined, FileTextOutlined, PictureOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
 import { Link, useLocation } from "react-router-dom";
@@ -25,9 +25,9 @@ function getItem(
 const items: MenuProps['items'] = [
     getItem(<Link to="/">Home</Link>, "home", <SettingOutlined />),
     { type: 'divider' },
-    getItem(<Link to="/users">Users</Link>, "users", <SettingOutlined />),
-    getItem(<Link to="/posts">Posts</Link>, "posts", <SettingOutlined />),
-    getItem(<Link to="/albums">Albums</Link>, "albums", <SettingOutlined />),
+    getItem(<Link to="/users">Users</Link>, "users", <UserOutlined />),
+    getItem(<Link to="/posts">Posts</Link>, "posts", <FileTextOutlined />),
+    getItem(<Link to="/albums">Albums</Link>, "albums", <PictureOutlined />),
 ];
 
 const MyMenu = () => {
