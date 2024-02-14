@@ -16,7 +16,7 @@ const PageTitle = (props: PageTitleProps) => {
                 background: colorBgContainer,
                 color: colorPrimary,
                 textAlign: "center",
-                fontSize: "3em"
+                fontSize: "2em"
             }}>
             {props.children}
         </Layout.Header>

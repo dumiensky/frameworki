@@ -50,3 +50,10 @@ export type Comment = {
     email: string;
     body: string;
 };
+
+export type Todo = {
+    userId: number;
+    id: number;
+    title: string;
+    completed: boolean;
+};
