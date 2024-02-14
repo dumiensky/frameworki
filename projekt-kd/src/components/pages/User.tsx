@@ -6,6 +6,7 @@ import { List } from "antd";
 import { useParams, Link } from "react-router-dom";
 import { LoadingOutlined } from '@ant-design/icons';
 import Authorized from "../general/Authorized";
+import FakeDeleteButton from "../general/FakeDeleteButton";
 
 const User = () => {
 
@@ -31,9 +32,11 @@ const User = () => {
         user ?
             <Page title={user.name}>
                 <Authorized userId={user.id}>
-                    <h3 style={{textAlign: 'center', color: 'red'}}>
-                        (You)
-                    </h3>
+                    <div style={{display: 'flex', justifyContent: 'end'}}>
+                        <FakeDeleteButton>
+                            Delete your account
+                        </FakeDeleteButton>
+                    </div>
                 </Authorized>
                 <ul>
                     <li><strong>Address</strong>: {user.address.zipcode} {user.address.city}, {user.address.street} {user.address.suite}</li>

@@ -5,6 +5,8 @@ import { getPost, getPostComments, getUser } from "../../api/placeholderApi";
 import { List } from "antd";
 import { useParams } from "react-router-dom";
 import { LoadingOutlined } from '@ant-design/icons';
+import Authorized from "../general/Authorized";
+import FakeDeleteButton from "../general/FakeDeleteButton";
 
 const Post = () => {
 
@@ -28,6 +30,13 @@ const Post = () => {
         post ?
             <Page title={post.title}>
                 <h5 style={{textAlign: 'center'}}>by <strong>{user?.name}</strong></h5>
+                <Authorized userId={post.userId}>
+                    <div style={{display: 'flex', justifyContent: 'end'}}>
+                        <FakeDeleteButton small>
+                            Delete your post
+                        </FakeDeleteButton>
+                    </div>
+                </Authorized>
                 <p style={{border: '1px solid black', borderRadius: '10px', padding: '20px', background: '#eee'}}>{post.body}</p>
                 <List
                     dataSource={comments}
