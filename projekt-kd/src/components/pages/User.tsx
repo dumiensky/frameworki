@@ -1,6 +1,6 @@
 import Page from "../layout/Page";
 import { Album, User as UserType, Todo, Post } from "../../types/types";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { getUser, getUserAlbums, getUserPosts, getUserTodos } from "../../api/placeholderApi";
 import { List } from "antd";
 import { useParams, Link } from "react-router-dom";

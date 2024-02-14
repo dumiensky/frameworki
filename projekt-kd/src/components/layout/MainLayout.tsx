@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Layout, theme } from "antd";
+import { InputNumber, Layout, theme } from "antd";
 import { useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import Menu from "./Menu";
@@ -11,7 +11,7 @@ const MainLayout = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
-  const [userId = 1, setUserId] = useState<number>();
+  const [userId = 1, setUserId] = useState<number | null>();
 
   return (
     <Layout hasSider>
@@ -19,10 +19,11 @@ const MainLayout = () => {
         <Menu />
       </Sider>
       <Layout style={{ marginLeft: 200 }}>
-        <p>Simulate login by userId:</p>
-        <input type='number' value={userId} onChange={e => setUserId(e.currentTarget.valueAsNumber)} min={0} />
-        <hr/>
-        <CurrentUserContext.Provider value={{userId: userId}}>
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'end', gap: '10px'}}>
+          <p>Simulate login by userId:</p>
+          <InputNumber value={userId} onChange={e => setUserId(e)} min={0} />
+        </div>
+        <CurrentUserContext.Provider value={{userId: userId ?? 1}}>
           <Content style={{ margin: '24px 16px', overflow: 'initial' }}>
             <div
               style={{
