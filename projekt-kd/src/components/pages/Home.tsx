@@ -22,7 +22,8 @@ const Home = () => (
                 display: 'flex',
                 gap: '12px',
                 flexDirection: 'column',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                alignItems: 'center'
             }}>
                 <Link to="/posts">
                     <Button type="primary">

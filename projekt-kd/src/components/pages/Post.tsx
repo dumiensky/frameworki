@@ -27,12 +27,12 @@ const Post = () => {
     return (
         post ?
             <Page title={post.title}>
-                <h5>by <strong>{user?.name}</strong></h5>
+                <h5 style={{textAlign: 'center'}}>by <strong>{user?.name}</strong></h5>
                 <p style={{border: '1px solid black', borderRadius: '10px', padding: '20px', background: '#eee'}}>{post.body}</p>
                 <List
                     dataSource={comments}
                     renderItem={(comment) => (
-                        <List.Item style={{border: '1px solid #888', borderRadius: '10px', padding: '5px 20px', marginTop: '5px', background: '#fafafa', textAlign: 'left'}}>
+                        <List.Item style={{border: '1px solid #888', borderRadius: '10px', padding: '5px 20px', marginTop: '5px', background: '#fafafa'}}>
                             <p>
                                 <strong>{comment.name}:</strong> {comment.body}
                             </p>

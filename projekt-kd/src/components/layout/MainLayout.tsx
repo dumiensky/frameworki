@@ -1,13 +1,17 @@
 import { Outlet } from "react-router-dom";
 import { Layout, theme } from "antd";
+import { useState } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import Menu from "./Menu";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 
 const MainLayout = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  const [userId = 1, setUserId] = useState<number>();
 
   return (
     <Layout hasSider>
@@ -15,17 +19,21 @@ const MainLayout = () => {
         <Menu />
       </Sider>
       <Layout style={{ marginLeft: 200 }}>
-        <Content style={{ margin: '24px 16px', overflow: 'initial' }}>
-          <div
-            style={{
-              padding: 24,
-              textAlign: 'center',
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
-            }}>
-            <Outlet />
-          </div>
-        </Content>
+        <p>Simulate login by userId:</p>
+        <input type='number' value={userId} onChange={e => setUserId(e.currentTarget.valueAsNumber)} min={0} />
+        <hr/>
+        <CurrentUserContext.Provider value={{userId: userId}}>
+          <Content style={{ margin: '24px 16px', overflow: 'initial' }}>
+            <div
+              style={{
+                padding: 24,
+                background: colorBgContainer,
+                borderRadius: borderRadiusLG,
+              }}>
+              <Outlet />
+            </div>
+          </Content>
+        </CurrentUserContext.Provider>
         <Footer style={{ textAlign: 'center' }}>
           Kacper Dumieński 12840, WSEI, Frameworki frontendowe
         </Footer>

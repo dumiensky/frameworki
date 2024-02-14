@@ -1,10 +1,11 @@
 import Page from "../layout/Page";
 import { Album, User as UserType, Todo, Post } from "../../types/types";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { getUser, getUserAlbums, getUserPosts, getUserTodos } from "../../api/placeholderApi";
 import { List } from "antd";
 import { useParams, Link } from "react-router-dom";
 import { LoadingOutlined } from '@ant-design/icons';
+import Authorized from "../general/Authorized";
 
 const User = () => {
 
@@ -29,12 +30,17 @@ const User = () => {
     return (
         user ?
             <Page title={user.name}>
-                <ul style={{textAlign: 'left'}}>
+                <Authorized userId={user.id}>
+                    <h3 style={{textAlign: 'center', color: 'red'}}>
+                        (You)
+                    </h3>
+                </Authorized>
+                <ul>
                     <li><strong>Address</strong>: {user.address.zipcode} {user.address.city}, {user.address.street} {user.address.suite}</li>
                     <li><strong>Company</strong>: {user.company.name}</li>
                     <li><strong>Website</strong>: {user.website}</li>
                 </ul>
-
+                
                 <h3>Albums</h3>
                 <List
                     dataSource={albums}
